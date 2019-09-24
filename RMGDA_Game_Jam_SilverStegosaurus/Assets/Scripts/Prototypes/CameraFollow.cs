@@ -20,6 +20,6 @@ public class CameraFollow : MonoBehaviour
    // Update is called once per frame
    void Update()
    {
-      this.transform.position += (thePlayer.transform.position - this.transform.position) * 0.05f;
+      transform.position += (thePlayer.transform.position - transform.position) * 0.05f;
    }
 }
