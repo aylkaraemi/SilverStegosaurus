@@ -18,8 +18,8 @@ public class PhysicsCameraFollow : MonoBehaviour
    }
 
    // Update is called once per frame
-   void FixedUpdate()
+   void LateUpdate()
    {
-      transform.position += (thePlayer.transform.position - transform.position) * 0.05f;
+      transform.position += (thePlayer.transform.position - transform.position) * 0.08f;
    }
 }

@@ -12,6 +12,7 @@ public class JoystickControllerMovement : MonoBehaviour
    float turn;
    Vector3 moveVec;
    Vector3 rotateVec;
+   Vector3 velocity;
    Rigidbody rBody;
 
    private void Awake()
@@ -22,10 +23,16 @@ public class JoystickControllerMovement : MonoBehaviour
    // Start is called before the first frame update
    void Start()
    {
-
+      velocity = Vector3.zero;
    }
 
    // Update is called once per frame
+   private void Update()
+   {
+      
+      //rBody.velocity = velocity;
+   }
+
    void FixedUpdate()
    {
       moveX = Input.GetAxisRaw("Horizontal");
