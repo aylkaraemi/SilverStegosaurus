@@ -10,6 +10,7 @@ public class JoystickControllerMovement : MonoBehaviour
    float moveX;
    float moveZ;
    float turn;
+   float moveSpeed;
    Vector3 moveVec;
    Vector3 rotateVec;
    Vector3 velocity;
@@ -30,7 +31,6 @@ public class JoystickControllerMovement : MonoBehaviour
    private void Update()
    {
       
-      //rBody.velocity = velocity;
    }
 
    void FixedUpdate()
@@ -44,18 +44,26 @@ public class JoystickControllerMovement : MonoBehaviour
 
    }
 
+   /// <summary>
+   /// used for horizontal and vertical movement of the Player
+   /// </summary>
+   /// <param name="xDirection"></param>
+   /// <param name="zDirection"></param>
    void Movement(float xDirection, float zDirection)
    {
       moveVec = new Vector3(xDirection, 0f, zDirection);
 
-      float moveSpeed = maxMoveSpeed * moveVec.magnitude;
+      moveSpeed = maxMoveSpeed * moveVec.magnitude;
 
       moveVec = moveVec.normalized * moveSpeed * Time.deltaTime;
 
       rBody.MovePosition(this.transform.position + moveVec);
    }
 
-
+   /// <summary>
+   /// used for turning the Player
+   /// </summary>
+   /// <param name="turnDirection"></param>
    void Rotation(float turnDirection)
    {
       rotateVec = new Vector3(0f, turnDirection, 0f) * turnSpeed * Time.deltaTime;
@@ -63,5 +71,14 @@ public class JoystickControllerMovement : MonoBehaviour
       Quaternion rotateQuaternion = Quaternion.Euler(rotateVec);
 
       rBody.MoveRotation(rBody.rotation * rotateQuaternion);
+   }
+
+   /// <summary>
+   /// get's the player's movement speed
+   /// </summary>
+   /// <returns>moveSpeed</returns>
+   public float GetMoveSpeed()
+   {
+      return moveSpeed;
    }
 }

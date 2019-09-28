@@ -19,9 +19,15 @@ public class HopeExploreFSM : HopeBaseFSM
 
       // Disabling auto-braking allows for continuous movement
       // per Unity documentation
-      agent.autoBraking = false;
+      //agent.autoBraking = false;
+
+      if (agent.speed == 0)
+      {
+         agent.speed = moveSpeed;
+      }
 
       _destPoint = hopeAI.RandomWaypointNumber(waypoints.Length);
+      hopeAI.SetRandomIdleActionNumber();
    }
 
    // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
@@ -30,6 +36,9 @@ public class HopeExploreFSM : HopeBaseFSM
       // Returns if no points have been set up
       if (waypoints.Length == 0)
          return;
+
+      // starts timer until Hope goes idle
+      hopeAI.StartTimer("timerUntilIdle");
 
       // Selects next destination when hope gets close to
       // current destination
@@ -44,6 +53,6 @@ public class HopeExploreFSM : HopeBaseFSM
    // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
    override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
    {
-
+      hopeAI.ResetTimer("timerUntilIdle");
    }
 }
