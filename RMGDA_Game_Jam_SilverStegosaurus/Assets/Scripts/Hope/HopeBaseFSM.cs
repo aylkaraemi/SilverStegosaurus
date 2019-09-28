@@ -9,7 +9,6 @@ public class HopeBaseFSM : StateMachineBehaviour
    public HopeAI hopeAI;
    public GameObject thePlayer;
    public NavMeshAgent agent;
-   public float moveSpeed = 3.5f;
 
    // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
    override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)

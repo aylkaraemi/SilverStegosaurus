@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class HopeAI : MonoBehaviour
 {
+   public GameObject[] waypoints;
+
    private Animator _animator;
    private GameObject _thePlayer;
    private float _timer = 0f;
@@ -12,6 +14,7 @@ public class HopeAI : MonoBehaviour
    {
       _thePlayer = GameObject.FindGameObjectWithTag("Player");
       _animator = GetComponent<Animator>();
+      waypoints = GameObject.FindGameObjectsWithTag("Waypoint");
    }
 
    // Start is called before the first frame update
@@ -32,9 +35,9 @@ public class HopeAI : MonoBehaviour
    /// </summary>
    /// <param name="waypointLength">length of waypoint array</param>
    /// <returns>random int within waypoint array bounds</returns>
-   public int RandomWaypointNumber(int waypointLength)
+   public int RandomWaypointNumber()
    {
-      return Random.Range(0, waypointLength);
+      return Random.Range(0, waypoints.Length);
    }
 
    /// <summary>
