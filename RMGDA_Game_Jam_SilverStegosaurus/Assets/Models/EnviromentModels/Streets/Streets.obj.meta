@@ -1,9 +1,34 @@
 fileFormatVersion: 2
-guid: 50ba7edf98f9248439e59008d49ad01c
+guid: da9d0ead8c4373247a591bd211521e5d
 ModelImporter:
   serializedVersion: 26
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material
+    second: {fileID: 2100000, guid: e1e2639b43a88af4ab80195b5bbf829d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: customMaterial11
+    second: {fileID: 2100000, guid: 10bdf1c2ec170284382270bb2660a00a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: customMaterial6
+    second: {fileID: 2100000, guid: bb85bf13577a5044aa8593bde973cd86, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: golfBorder
+    second: {fileID: 2100000, guid: 041e934e3ed6fd34a804fccf4442cdcb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: stone
+    second: {fileID: 2100000, guid: 881b1105d2432654f89f3df2e6d0d290, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
