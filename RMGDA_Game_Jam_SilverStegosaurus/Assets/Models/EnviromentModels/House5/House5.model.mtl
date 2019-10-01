@@ -1,0 +1,67 @@
+# Made using Asset Forge (www.assetforge.io) version 1.3 
+
+newmtl border (Instance)
+Ka 0.000000 0.000000 0.000000 
+Kd 0.31 0.282 0.274 
+Ks 0.330000 0.330000 0.330000 
+
+newmtl customMaterial8 (Instance)
+Ka 0.000000 0.000000 0.000000 
+Kd 0.54 0.54 0.54 
+Ks 0.330000 0.330000 0.330000 
+
+newmtl border (Instance) (Instance)
+Ka 0.000000 0.000000 0.000000 
+Kd 0.31 0.282 0.274 
+Ks 0.330000 0.330000 0.330000 
+
+newmtl customMaterial6 (Instance)
+Ka 0.000000 0.000000 0.000000 
+Kd 0.24 0.24 0.24 
+Ks 0.330000 0.330000 0.330000 
+
+newmtl roofJade (Instance)
+Ka 0.000000 0.000000 0.000000 
+Kd 0.2 0.176 0.131 
+Ks 0.330000 0.330000 0.330000 
+
+newmtl roofJade (Instance) (Instance)
+Ka 0.000000 0.000000 0.000000 
+Kd 0.2 0.176 0.131 
+Ks 0.330000 0.330000 0.330000 
+
+newmtl stone (Instance)
+Ka 0.000000 0.000000 0.000000 
+Kd 0.667 0.663 0.737 
+Ks 0.330000 0.330000 0.330000 
+
+newmtl element (Instance) (Instance)
+Ka 0.000000 0.000000 0.000000 
+Kd 0.945 0.949 0.965 
+Ks 0.330000 0.330000 0.330000 
+
+newmtl customMaterial9 (Instance)
+Ka 0.000000 0.000000 0.000000 
+Kd 0 0 0 
+Ks 0.330000 0.330000 0.330000 
+
+newmtl glass (Instance) (Instance)
+Ka 0.000000 0.000000 0.000000 
+Kd 0.298 0.314 0.365 
+Ks 0.330000 0.330000 0.330000 
+
+newmtl customMaterial12 (Instance)
+Ka 0.000000 0.000000 0.000000 
+Kd 0.58 0.487 0.373 
+Ks 0.330000 0.330000 0.330000 
+
+newmtl element (Instance) (Instance) (Instance)
+Ka 0.000000 0.000000 0.000000 
+Kd 0.945 0.949 0.965 
+Ks 0.330000 0.330000 0.330000 
+
+newmtl customMaterial9 (Instance) (Instance)
+Ka 0.000000 0.000000 0.000000 
+Kd 0 0 0 
+Ks 0.330000 0.330000 0.330000 
+
