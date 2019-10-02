@@ -1,20 +1,41 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class HopeAI : MonoBehaviour
 {
    public GameObject[] waypoints;
 
+   private static HopeAI _instance;
    private Animator _animator;
    private GameObject _thePlayer;
    private float _timer = 0f;
+   [SerializeField] private Text _aText;
+
+   /// <summary>
+   /// for singleton access to Hope
+   /// </summary>
+   public static HopeAI Instance
+   {
+      get
+      {
+         if (_instance == null)
+         {
+
+         }
+
+         return _instance;
+      }
+   }
 
    private void Awake()
    {
+      _instance = this;
       _thePlayer = GameObject.FindGameObjectWithTag("Player");
       _animator = GetComponent<Animator>();
       waypoints = GameObject.FindGameObjectsWithTag("Waypoint");
+      _aText = GetComponentInChildren<Text>();
    }
 
    // Start is called before the first frame update
@@ -77,11 +98,29 @@ public class HopeAI : MonoBehaviour
    }
 
    /// <summary>
-   /// 
+   /// sets the animator player speed based off player joystick press amount
    /// </summary>
    private void SetAnimatorPlayerSpeed()
    {
       _animator.SetFloat("playerSpeed", _thePlayer.GetComponent<JoystickControllerMovement>().GetMoveSpeed());
+   }
+
+   /// <summary>
+   /// set the animator isCaught variable to true
+   /// </summary>
+   public void SetAnimatorIsCaughtToTrue()
+   {
+      _animator.SetBool("isCaught", true);
+   }
+
+   public void TurnOnAButtonUI()
+   {
+      _aText.enabled = true;
+   }
+
+   public void TurnOffAButtonUI()
+   {
+      _aText.enabled = false;
    }
 
    /// <summary>
