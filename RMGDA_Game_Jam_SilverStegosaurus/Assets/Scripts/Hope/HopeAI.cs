@@ -6,12 +6,16 @@ using UnityEngine.UI;
 public class HopeAI : MonoBehaviour
 {
    public GameObject[] waypoints;
+   public const float MAX_STRUGGLE_BAR_AMOUNT = 80.0f;
+   public bool wasCaught = false;
 
    private static HopeAI _instance;
    private Animator _animator;
    private GameObject _thePlayer;
    private float _timer = 0f;
-   [SerializeField] private Text _aText;
+   private Text _aText;
+   private Slider _struggleBar;
+
 
    /// <summary>
    /// for singleton access to Hope
@@ -36,6 +40,12 @@ public class HopeAI : MonoBehaviour
       _animator = GetComponent<Animator>();
       waypoints = GameObject.FindGameObjectsWithTag("Waypoint");
       _aText = GetComponentInChildren<Text>();
+      _struggleBar = GetComponentInChildren<Slider>();
+
+      if (_struggleBar != null)
+      {
+         _struggleBar.value = MAX_STRUGGLE_BAR_AMOUNT;
+      }
    }
 
    // Start is called before the first frame update
@@ -113,14 +123,43 @@ public class HopeAI : MonoBehaviour
       _animator.SetBool("isCaught", true);
    }
 
+   /// <summary>
+   /// turns on the A button UI element above Hope
+   /// </summary>
    public void TurnOnAButtonUI()
    {
       _aText.enabled = true;
    }
 
+   /// <summary>
+   /// turns off the A button UI element above Hope
+   /// </summary>
    public void TurnOffAButtonUI()
    {
       _aText.enabled = false;
+   }
+
+   /// <summary>
+   /// decreases Hope's struggle bar
+   /// </summary>
+   /// <param name="amount"></param>
+   public void DecreaseStruggleBarValue(float amount)
+   {
+      _struggleBar.value -= amount;
+   }
+
+   /// <summary>
+   /// increases Hope's struggle bar
+   /// </summary>
+   /// <param name="amount"></param>
+   public void IncreaseStruggleBarValue(float amount)
+   {
+      _struggleBar.value += amount;
+   }
+
+   public float GetHopeStruggleBarValue()
+   {
+      return _struggleBar.value;
    }
 
    /// <summary>

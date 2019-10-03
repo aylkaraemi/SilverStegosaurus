@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerAction : MonoBehaviour
 {
    private bool _isHopeInRange = false;
+   [SerializeField] private float _increaseStruggleBarAmount = 3.0f;
 
    // Start is called before the first frame update
    void Start()
@@ -19,13 +20,19 @@ public class PlayerAction : MonoBehaviour
       {
          Debug.Log("Pressed A Button");
 
-         if (_isHopeInRange)
+         // catch Hope with A Button
+         if (_isHopeInRange && !HopeAI.Instance.wasCaught)
          {
             Grab();
          }
-         
-      }
 
+         // struggle with Hope
+         if (HopeAI.Instance.wasCaught)
+         {
+            Struggle();
+         }
+        
+      }
 
    }
 
@@ -38,11 +45,11 @@ public class PlayerAction : MonoBehaviour
    }
 
    /// <summary>
-   /// 
+   /// increase Hope struggle bar amount
    /// </summary>
-   void FireTreats()
+   void Struggle()
    {
-
+      HopeAI.Instance.IncreaseStruggleBarValue(_increaseStruggleBarAmount);
    }
 
    private void OnTriggerEnter(Collider other)
