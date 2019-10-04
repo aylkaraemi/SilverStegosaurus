@@ -16,10 +16,10 @@ TagManager:
   - 
   - 
   - MoveArea
-  - 
-  - 
-  - 
-  - 
+  - Player
+  - Hope
+  - NPC
+  - Waypoint
   - 
   - 
   - 
