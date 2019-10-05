@@ -9,12 +9,14 @@ public class HopeAI : MonoBehaviour
    public const float MAX_STRUGGLE_BAR_AMOUNT = 80.0f;
    public bool wasCaught = false;
 
+   [SerializeField] GameObject _struggleBarHolder; // added in inspector
+   [SerializeField] private Slider _struggleBar;
    private static HopeAI _instance;
    private Animator _animator;
    private GameObject _thePlayer;
    private float _timer = 0f;
    private Text _aText;
-   private Slider _struggleBar;
+   
 
 
    /// <summary>
@@ -40,12 +42,6 @@ public class HopeAI : MonoBehaviour
       _animator = GetComponent<Animator>();
       waypoints = GameObject.FindGameObjectsWithTag("Waypoint");
       _aText = GetComponentInChildren<Text>();
-      _struggleBar = GetComponentInChildren<Slider>();
-
-      if (_struggleBar != null)
-      {
-         _struggleBar.value = MAX_STRUGGLE_BAR_AMOUNT;
-      }
    }
 
    // Start is called before the first frame update
@@ -140,6 +136,28 @@ public class HopeAI : MonoBehaviour
    }
 
    /// <summary>
+   /// rese's the struggle bar to the start value amount
+   /// </summary>
+   public void ResetStruggleBarToStartValue()
+   {
+      _struggleBar.value = MAX_STRUGGLE_BAR_AMOUNT;
+   }
+
+   public void TurnOffStruggleBar()
+   {
+      _struggleBarHolder.SetActive(false);
+   }
+
+   public void TurnOnStruggleBar()
+   {
+      _struggleBarHolder.SetActive(true);
+      if (_struggleBar != null)
+      {
+         _struggleBar.value = MAX_STRUGGLE_BAR_AMOUNT;
+      }
+   }
+
+   /// <summary>
    /// decreases Hope's struggle bar
    /// </summary>
    /// <param name="amount"></param>
@@ -157,6 +175,10 @@ public class HopeAI : MonoBehaviour
       _struggleBar.value += amount;
    }
 
+   /// <summary>
+   /// gets the current value of the Struggle Bar
+   /// </summary>
+   /// <returns></returns>
    public float GetHopeStruggleBarValue()
    {
       return _struggleBar.value;

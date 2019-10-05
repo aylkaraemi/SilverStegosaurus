@@ -4,8 +4,14 @@ using UnityEngine;
 
 public class PlayerAction : MonoBehaviour
 {
-   private bool _isHopeInRange = false;
+   public int candyAmount = 0;
+
    [SerializeField] private float _increaseStruggleBarAmount = 3.0f;
+   [SerializeField] private float _pointerAppearTime = 15.0f;
+   [SerializeField] private int _pointerAppearCandyAmount = 10;
+   [SerializeField] private GameObject _pointer; // dragged into Inspector
+   private bool _isHopeInRange = false;
+
 
    // Start is called before the first frame update
    void Start()
@@ -52,6 +58,17 @@ public class PlayerAction : MonoBehaviour
       HopeAI.Instance.IncreaseStruggleBarValue(_increaseStruggleBarAmount);
    }
 
+   /// <summary>
+   /// power down the pointer pointer to Hope (sets active to false)
+   /// </summary>
+   /// <returns></returns>
+   IEnumerator ArrowPowerDownRoutine()
+   {
+      yield return new WaitForSeconds(_pointerAppearTime);
+      candyAmount = 0;
+      _pointer.SetActive(false);
+   }
+
    private void OnTriggerEnter(Collider other)
    {
       if (other.tag == "Hope")
@@ -59,6 +76,25 @@ public class PlayerAction : MonoBehaviour
          Debug.Log("Hope is in Range");
          _isHopeInRange = true;
          HopeAI.Instance.TurnOnAButtonUI();
+      }
+
+      if (other.tag == "Candy")
+      {
+         candyAmount++;
+         Debug.Log("Candy Amount now = " + candyAmount);
+
+         Candy candy = other.GetComponent<Candy>();
+
+         if (candy != null)
+         {
+            candy.DestroyOnPickUp();
+         }
+
+         if (candyAmount % _pointerAppearCandyAmount == 0)
+         {
+            _pointer.SetActive(true);
+            StartCoroutine(ArrowPowerDownRoutine());
+         }
       }
    }
 
@@ -70,6 +106,8 @@ public class PlayerAction : MonoBehaviour
          _isHopeInRange = false;
          HopeAI.Instance.TurnOffAButtonUI();
       }
+
+
    }
 
 }

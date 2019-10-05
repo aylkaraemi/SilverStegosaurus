@@ -12,6 +12,13 @@ public class HopeRunAwayFSM : HopeBaseFSM
    {
       base.OnStateEnter(animator, stateInfo, layerIndex);
       animator.SetBool("inRunAwayState", true);
+
+      // reset to 80 if Hope got away
+      if (hopeAI.GetHopeStruggleBarValue() < 80)
+      {
+         hopeAI.ResetStruggleBarToStartValue();
+      }
+
       agent.speed = _moveSpeed;
 
       _destPoint = hopeAI.RandomWaypointNumber();

@@ -5,6 +5,9 @@ using UnityEngine;
 public class HopeCaughtFSM : HopeBaseFSM
 {
    private const float _STRUGGLE_BAR_DECREASE_AMOUNT = 0.3f;
+   private const float _STRUGGLE_BAR_MAX = 90.0f;
+   private const float _STRUGGLE_BAR_MIN = 1.0f;
+   private const float _STRUGGLE_BAR_WIN = 95.0f;
 
    // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
    override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -13,6 +16,7 @@ public class HopeCaughtFSM : HopeBaseFSM
       agent.speed = 0f;
       hopeAI.TurnOffAButtonUI();
       hopeAI.wasCaught = true;
+      hopeAI.TurnOnStruggleBar();
    }
 
    // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
@@ -20,17 +24,19 @@ public class HopeCaughtFSM : HopeBaseFSM
    {
       Debug.Log("Hope StruggleBarValue = " + hopeAI.GetHopeStruggleBarValue());
 
-      if (hopeAI.GetHopeStruggleBarValue() < 90.0f && hopeAI.GetHopeStruggleBarValue() > 1.0f)
+      if (hopeAI.GetHopeStruggleBarValue() < _STRUGGLE_BAR_MAX && hopeAI.GetHopeStruggleBarValue() > _STRUGGLE_BAR_MIN)
       {
          hopeAI.DecreaseStruggleBarValue(_STRUGGLE_BAR_DECREASE_AMOUNT);
       }
-      else if (hopeAI.GetHopeStruggleBarValue() > 95.0f)
+      else if (hopeAI.GetHopeStruggleBarValue() > _STRUGGLE_BAR_WIN)
       {
          Debug.Log("Player caught Hope value above 95");
       }
-      else if (hopeAI.GetHopeStruggleBarValue() < 1.0f)
+      else if (hopeAI.GetHopeStruggleBarValue() < _STRUGGLE_BAR_MIN)
       {
          Debug.Log("Hope broke free value below 0");
+         animator.SetBool("isCaught", false);
+         hopeAI.wasCaught = false;
       }
       
    }
@@ -38,6 +44,6 @@ public class HopeCaughtFSM : HopeBaseFSM
    // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
    override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
    {
-      hopeAI.wasCaught = false;
+      hopeAI.TurnOffStruggleBar();
    }
 }
