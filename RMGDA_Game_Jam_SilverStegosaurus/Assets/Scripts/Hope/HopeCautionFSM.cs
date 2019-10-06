@@ -14,7 +14,9 @@ public class HopeCautionFSM : HopeBaseFSM
    // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
    override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
    {
-      hope.transform.LookAt(thePlayer.transform.position);
+      Vector3 playerPosition = new Vector3(thePlayer.transform.position.x, animator.transform.position.y,
+         thePlayer.transform.position.z);
+      hope.transform.LookAt(playerPosition);
    }
 
    // OnStateExit is called when a transition ends and the state machine finishes evaluating this state

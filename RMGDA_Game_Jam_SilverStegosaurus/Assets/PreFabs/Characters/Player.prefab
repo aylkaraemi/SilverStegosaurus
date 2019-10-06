@@ -206,7 +206,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   candyAmount: 0
-  _increaseStruggleBarAmount: 7
+  _increaseStruggleBarAmount: 4
   _pointerAppearTime: 15
   _pointerAppearCandyAmount: 10
   _pointer: {fileID: 6999094704269377084}
