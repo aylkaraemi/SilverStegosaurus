@@ -64,6 +64,12 @@ public class JoystickControllerMovement : MonoBehaviour
    {
       moveVec = new Vector3(xDirection, 0f, zDirection);
 
+      if (moveVec != Vector3.zero)
+      {
+         this.transform.rotation = Quaternion.LookRotation(moveVec);
+      }
+      
+
       moveSpeed = maxMoveSpeed * moveVec.magnitude;
       _animator.SetFloat("moveSpeed", moveSpeed);
 
