@@ -43,11 +43,11 @@ public class JoystickControllerMovement : MonoBehaviour
 
       if (moveX == 0 && moveZ == 0)
       {
-         _animator.SetBool("isRunning", false);
+         _animator.SetBool("isMoving", false);
       }
       else
       {
-         _animator.SetBool("isRunning", true);
+         _animator.SetBool("isMoving", true);
       }
 
       Movement(moveX, moveZ);
@@ -65,10 +65,11 @@ public class JoystickControllerMovement : MonoBehaviour
       moveVec = new Vector3(xDirection, 0f, zDirection);
 
       moveSpeed = maxMoveSpeed * moveVec.magnitude;
+      _animator.SetFloat("moveSpeed", moveSpeed);
 
-      moveVec = moveVec.normalized * moveSpeed * Time.deltaTime;
+      moveVec *= maxMoveSpeed;
 
-      rBody.MovePosition(this.transform.position + moveVec);
+      rBody.velocity = moveVec;
    }
 
    /// <summary>
