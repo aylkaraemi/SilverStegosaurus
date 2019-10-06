@@ -15,10 +15,12 @@ public class JoystickControllerMovement : MonoBehaviour
    Vector3 rotateVec;
    Vector3 velocity;
    Rigidbody rBody;
+   private Animator _animator;
 
    private void Awake()
    {
       rBody = GetComponent<Rigidbody>();
+      _animator = GetComponent<Animator>();
    }
 
    // Start is called before the first frame update
@@ -38,6 +40,15 @@ public class JoystickControllerMovement : MonoBehaviour
       moveX = Input.GetAxisRaw("Horizontal");
       moveZ = Input.GetAxisRaw("Vertical");
       turn = Input.GetAxisRaw("RightJoystickTurn");
+
+      if (moveX == 0 && moveZ == 0)
+      {
+         _animator.SetBool("isRunning", false);
+      }
+      else
+      {
+         _animator.SetBool("isRunning", true);
+      }
 
       Movement(moveX, moveZ);
       Rotation(turn);
