@@ -62,18 +62,17 @@ public class JoystickControllerMovement : MonoBehaviour
    /// <param name="zDirection"></param>
    void Movement(float xDirection, float zDirection)
    {
-      moveVec = new Vector3(xDirection, 0f, zDirection);
+      moveVec = new Vector3(xDirection * maxMoveSpeed, rBody.velocity.y, zDirection * maxMoveSpeed);
 
-      if (moveVec != Vector3.zero)
+      if (new Vector3(xDirection, 0.0f, zDirection) != Vector3.zero)
       {
-         this.transform.rotation = Quaternion.LookRotation(moveVec);
+         this.transform.rotation = Quaternion.LookRotation(new Vector3(xDirection, 0.0f, zDirection));
       }
-      
 
       moveSpeed = maxMoveSpeed * moveVec.magnitude;
       _animator.SetFloat("moveSpeed", moveSpeed);
 
-      moveVec *= maxMoveSpeed;
+      //moveVec *= maxMoveSpeed;
 
       rBody.velocity = moveVec;
    }
