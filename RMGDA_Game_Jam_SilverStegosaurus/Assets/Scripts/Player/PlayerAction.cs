@@ -11,6 +11,7 @@ public class PlayerAction : MonoBehaviour
    [SerializeField] private int _pointerAppearCandyAmount = 10;
    [SerializeField] private GameObject _pointer; // dragged into Inspector
    private bool _isHopeInRange = false;
+   private bool _pickedUpCandy = false;
 
 
    // Start is called before the first frame update
@@ -66,6 +67,7 @@ public class PlayerAction : MonoBehaviour
    {
       yield return new WaitForSeconds(_pointerAppearTime);
       candyAmount = 0;
+      _pickedUpCandy = false;
       _pointer.SetActive(false);
    }
 
@@ -80,21 +82,23 @@ public class PlayerAction : MonoBehaviour
 
       if (other.tag == "Candy")
       {
-         candyAmount++;
-         Debug.Log("Candy Amount now = " + candyAmount);
-
-         Candy candy = other.GetComponent<Candy>();
-
-         if (candy != null)
+         if (!_pickedUpCandy)
          {
-            candy.DestroyOnPickUp();
-         }
+            candyAmount++;
+            Debug.Log("Candy Amount now = " + candyAmount);
 
-         if (candyAmount % _pointerAppearCandyAmount == 0)
-         {
+            Candy candy = other.GetComponent<Candy>();
+
+            if (candy != null)
+            {
+               candy.DestroyOnPickUp();
+            }
+
+            _pickedUpCandy = true;
             _pointer.SetActive(true);
             StartCoroutine(ArrowPowerDownRoutine());
          }
+         
       }
    }
 
