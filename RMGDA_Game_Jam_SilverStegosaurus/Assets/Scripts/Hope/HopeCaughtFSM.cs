@@ -8,6 +8,7 @@ public class HopeCaughtFSM : HopeBaseFSM
    private const float _STRUGGLE_BAR_MAX = 90.0f;
    private const float _STRUGGLE_BAR_MIN = 1.0f;
    private const float _STRUGGLE_BAR_WIN = 95.0f;
+   private const string _CAUGHT = "caught";
 
    // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
    override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -17,12 +18,13 @@ public class HopeCaughtFSM : HopeBaseFSM
       hopeAI.TurnOffAButtonUI();
       hopeAI.wasCaught = true;
       hopeAI.TurnOnStruggleBar();
+      MusicManager.Instance.SetNewAudioSource(_CAUGHT);
    }
 
    // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
    override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
    {
-      Debug.Log("Hope StruggleBarValue = " + hopeAI.GetHopeStruggleBarValue());
+      MusicManager.Instance.FadeTracksInOut();
 
       if (hopeAI.GetHopeStruggleBarValue() < _STRUGGLE_BAR_MAX && hopeAI.GetHopeStruggleBarValue() > _STRUGGLE_BAR_MIN)
       {
@@ -45,5 +47,11 @@ public class HopeCaughtFSM : HopeBaseFSM
    override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
    {
       hopeAI.TurnOffStruggleBar();
+      // reset to 80 if Hope got away
+      if (hopeAI.GetHopeStruggleBarValue() < 80)
+      {
+         hopeAI.ResetStruggleBarToStartValue();
+      }
+      MusicManager.Instance.SetPreviousAudioSource(_CAUGHT);
    }
 }
