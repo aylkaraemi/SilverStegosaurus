@@ -6,6 +6,7 @@ public class HopeExploreFSM : HopeBaseFSM
 {
    private int _destPoint;
    private float _moveSpeed = 3.5f;
+   private const string _EXPLORE = "explore";
 
    // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
    override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -23,6 +24,7 @@ public class HopeExploreFSM : HopeBaseFSM
 
       _destPoint = hopeAI.RandomWaypointNumber();
       hopeAI.SetRandomIdleActionNumber();
+      MusicManager.Instance.SetNewAudioSource(_EXPLORE);
    }
 
    // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
@@ -31,6 +33,8 @@ public class HopeExploreFSM : HopeBaseFSM
       // Returns if no points have been set up
       if (hopeAI.waypoints.Length == 0)
          return;
+
+      MusicManager.Instance.FadeTracksInOut();
 
       // starts timer until Hope goes idle
       hopeAI.StartTimer("timerUntilIdle");
@@ -49,5 +53,6 @@ public class HopeExploreFSM : HopeBaseFSM
    override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
    {
       hopeAI.ResetTimer("timerUntilIdle");
+      MusicManager.Instance.SetPreviousAudioSource(_EXPLORE);
    }
 }

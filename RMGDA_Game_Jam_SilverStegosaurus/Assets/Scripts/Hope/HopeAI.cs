@@ -18,7 +18,6 @@ public class HopeAI : MonoBehaviour
    private Text _aText;
    
 
-
    /// <summary>
    /// for singleton access to Hope
    /// </summary>
@@ -28,7 +27,7 @@ public class HopeAI : MonoBehaviour
       {
          if (_instance == null)
          {
-
+            Debug.Log("HopeAI did not load");
          }
 
          return _instance;
