@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TrickOrTreaterFrontHit : MonoBehaviour
+public class TrickOrTreaterRightHit : MonoBehaviour
 {
    public TrickOrTreaterPatrol patrol; // loaded in Inspector
 
@@ -14,7 +14,8 @@ public class TrickOrTreaterFrontHit : MonoBehaviour
          {
             patrol.isHit = true;
          }
-         patrol.isFrontHit = true;
+
+         patrol.isRightHit = true;
       }
    }
 }

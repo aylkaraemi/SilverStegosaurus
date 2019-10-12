@@ -6,7 +6,10 @@ using UnityEngine.AI;
 public class TrickOrTreaterPatrol : MonoBehaviour
 {
    public GameObject[] waypoints;
-   public bool isHit;
+   public bool isHit = false;
+   public bool isFrontHit = false;
+   public bool isRightHit = false;
+   public bool isLeftHit = false;
    public bool isTriggerSet = false;
 
    private NavMeshAgent _agent;
@@ -31,23 +34,24 @@ public class TrickOrTreaterPatrol : MonoBehaviour
    {
       if (!isHit)
       {
-         if (_agent.speed == 0f)
-         {
-            _agent.speed = 1f;
-         }
-
          MoveToNextWaypoint();
       }
       else
       {
-         if (!isTriggerSet)
+         if (isFrontHit)
          {
-            _agent.speed = 0f;
-            _animator.SetTrigger("Hit");
-            isTriggerSet = true;
-            StartCoroutine(ReturnToNonHitCoroutine());
+            EnterHitState("FrontHit");
          }
-         
+
+         if (isLeftHit)
+         {
+            EnterHitState("LeftHit");
+         }
+
+         if (isRightHit)
+         {
+            EnterHitState("RightHit");
+         }
       }
       
    }
@@ -71,6 +75,42 @@ public class TrickOrTreaterPatrol : MonoBehaviour
    {
       yield return new WaitForSeconds(1.5f);
       isHit = false;
+
+      if (_agent.speed == 0f)
+      {
+         _agent.speed = 1f;
+      }
+
+      if (isFrontHit)
+      {
+         isFrontHit = false;
+      }
+
+      if (isLeftHit)
+      {
+         isLeftHit = false;
+      }
+
+      if (isRightHit)
+      {
+         isRightHit = false;
+      }
+
       isTriggerSet = false;
+   }
+
+   private void EnterHitState(string animTriggerName)
+   {
+      if (!isTriggerSet)
+      {
+         if (animTriggerName == "FrontHit")
+         {
+            _agent.speed = 0f;
+         }
+
+         _animator.SetTrigger(animTriggerName);
+         isTriggerSet = true;
+         StartCoroutine(ReturnToNonHitCoroutine());
+      }
    }
 }
