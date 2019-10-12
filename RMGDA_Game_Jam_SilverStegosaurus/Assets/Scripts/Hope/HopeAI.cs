@@ -11,12 +11,12 @@ public class HopeAI : MonoBehaviour
 
    [SerializeField] GameObject _struggleBarHolder; // added in inspector
    [SerializeField] private Slider _struggleBar;
-   private static HopeAI _instance;
    private Animator _animator;
    private GameObject _thePlayer;
    private float _timer = 0f;
    private Text _aText;
-   
+   private static HopeAI _instance;
+
 
    /// <summary>
    /// for singleton access to Hope

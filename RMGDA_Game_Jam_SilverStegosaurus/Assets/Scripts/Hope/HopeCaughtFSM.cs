@@ -19,6 +19,7 @@ public class HopeCaughtFSM : HopeBaseFSM
       hopeAI.wasCaught = true;
       hopeAI.TurnOnStruggleBar();
       MusicManager.Instance.SetCurrentAudioSource(_CAUGHT);
+      PlayerAction.Instance.SetAnimatorStruggleBool(true);
    }
 
    // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
@@ -53,5 +54,6 @@ public class HopeCaughtFSM : HopeBaseFSM
          hopeAI.ResetStruggleBarToStartValue();
       }
       MusicManager.Instance.SetPreviousAudioSource(_CAUGHT);
+      PlayerAction.Instance.SetAnimatorStruggleBool(false);
    }
 }

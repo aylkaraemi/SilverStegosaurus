@@ -6,12 +6,36 @@ public class PlayerAction : MonoBehaviour
 {
    public int candyAmount = 0;
 
-   [SerializeField] private float _increaseStruggleBarAmount = 3.0f;
+   [SerializeField] private float _increaseStruggleBarAmount = 2.0f;
    [SerializeField] private float _pointerAppearTime = 15.0f;
    [SerializeField] private int _pointerAppearCandyAmount = 10;
    [SerializeField] private GameObject _pointer; // dragged into Inspector
    private bool _isHopeInRange = false;
    private bool _pickedUpCandy = false;
+   private Animator _animator;
+   private static PlayerAction _instance;
+
+   /// <summary>
+   /// for singleton access to Player
+   /// </summary>
+   public static PlayerAction Instance
+   {
+      get
+      {
+         if (_instance == null)
+         {
+            Debug.Log("PlayerAction did not load");
+         }
+
+         return _instance;
+      }
+   }
+
+   private void Awake()
+   {
+      _instance = this;
+      _animator = GetComponent<Animator>();
+   }
 
 
    // Start is called before the first frame update
@@ -38,15 +62,18 @@ public class PlayerAction : MonoBehaviour
          {
             Struggle();
          }
-        
       }
+   }
 
+   public void SetAnimatorStruggleBool(bool isStruggling)
+   {
+      _animator.SetBool("isStruggling", isStruggling);
    }
 
    /// <summary>
    /// grab hope to win the game
    /// </summary>
-   void Grab()
+   private void Grab()
    {
       HopeAI.Instance.SetAnimatorIsCaughtToTrue();
    }
@@ -54,7 +81,7 @@ public class PlayerAction : MonoBehaviour
    /// <summary>
    /// increase Hope struggle bar amount
    /// </summary>
-   void Struggle()
+   private void Struggle()
    {
       HopeAI.Instance.IncreaseStruggleBarValue(_increaseStruggleBarAmount);
    }

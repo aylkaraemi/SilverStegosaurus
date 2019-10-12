@@ -6,11 +6,16 @@ using UnityEngine.AI;
 public class TrickOrTreaterPatrol : MonoBehaviour
 {
    public GameObject[] waypoints;
+   public bool isHit;
+   public bool isTriggerSet = false;
+
    private NavMeshAgent _agent;
    private int _randomDestinationPoint;
+   private Animator _animator;
 
    private void Awake()
    {
+      _animator = GetComponentInChildren<Animator>();
       _agent = GetComponent<NavMeshAgent>();
       waypoints = GameObject.FindGameObjectsWithTag("TrickOrTreatWaypoint");
    }
@@ -24,7 +29,27 @@ public class TrickOrTreaterPatrol : MonoBehaviour
    // Update is called once per frame
    void Update()
    {
-      MoveToNextWaypoint();
+      if (!isHit)
+      {
+         if (_agent.speed == 0f)
+         {
+            _agent.speed = 1f;
+         }
+
+         MoveToNextWaypoint();
+      }
+      else
+      {
+         if (!isTriggerSet)
+         {
+            _agent.speed = 0f;
+            _animator.SetTrigger("Hit");
+            isTriggerSet = true;
+            StartCoroutine(ReturnToNonHitCoroutine());
+         }
+         
+      }
+      
    }
 
    void MoveToNextWaypoint()
@@ -40,5 +65,12 @@ public class TrickOrTreaterPatrol : MonoBehaviour
       }
 
       _agent.SetDestination(waypoints[_randomDestinationPoint].transform.position);
+   }
+
+   private IEnumerator ReturnToNonHitCoroutine()
+   {
+      yield return new WaitForSeconds(1.5f);
+      isHit = false;
+      isTriggerSet = false;
    }
 }
