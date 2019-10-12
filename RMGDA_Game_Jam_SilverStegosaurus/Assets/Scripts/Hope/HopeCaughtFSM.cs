@@ -18,21 +18,21 @@ public class HopeCaughtFSM : HopeBaseFSM
       hopeAI.TurnOffAButtonUI();
       hopeAI.wasCaught = true;
       hopeAI.TurnOnStruggleBar();
-      MusicManager.Instance.SetNewAudioSource(_CAUGHT);
+      MusicManager.Instance.SetCurrentAudioSource(_CAUGHT);
    }
 
    // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
    override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
    {
-      MusicManager.Instance.FadeTracksInOut();
-
       if (hopeAI.GetHopeStruggleBarValue() < _STRUGGLE_BAR_MAX && hopeAI.GetHopeStruggleBarValue() > _STRUGGLE_BAR_MIN)
       {
+         MusicManager.Instance.FadeTracksInOut();
          hopeAI.DecreaseStruggleBarValue(_STRUGGLE_BAR_DECREASE_AMOUNT);
       }
       else if (hopeAI.GetHopeStruggleBarValue() > _STRUGGLE_BAR_WIN)
       {
          Debug.Log("Player caught Hope value above 95");
+         GameManager.Instance.PlayerWins();
       }
       else if (hopeAI.GetHopeStruggleBarValue() < _STRUGGLE_BAR_MIN)
       {

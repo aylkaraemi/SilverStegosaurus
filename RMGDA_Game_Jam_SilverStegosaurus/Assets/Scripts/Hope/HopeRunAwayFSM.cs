@@ -16,7 +16,7 @@ public class HopeRunAwayFSM : HopeBaseFSM
 
       agent.speed = _moveSpeed;
       _destPoint = hopeAI.RandomWaypointNumber();
-      MusicManager.Instance.SetNewAudioSource(_EXPLORE);
+      MusicManager.Instance.SetCurrentAudioSource(_EXPLORE);
    }
 
    // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

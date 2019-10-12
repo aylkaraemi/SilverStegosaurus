@@ -1,0 +1,29 @@
+fileFormatVersion: 2
+guid: fe9594aa28e32014180a63c74554680c
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Big Shoulders Display
+  fontNames:
+  - Big Shoulders Display
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: f682b12326ea0e040a525413b3d6b721, type: 3}
+  - {fileID: 12800000, guid: d13d94c65407ccb41a26c959c2889df2, type: 3}
+  - {fileID: 12800000, guid: 992b1ec89cfcb1747859709af04dfaa7, type: 3}
+  - {fileID: 12800000, guid: c3443d4bd7d3ed140940414ba9ba73f4, type: 3}
+  - {fileID: 12800000, guid: 25c3c36b4df36934d932e72457443433, type: 3}
+  - {fileID: 12800000, guid: 7ac7935c233c4924f8f0df9d6ff1bb45, type: 3}
+  - {fileID: 12800000, guid: 3344b7dd4e656a448a15c5746ff7d86b, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

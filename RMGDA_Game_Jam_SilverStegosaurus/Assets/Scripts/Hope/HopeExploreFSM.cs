@@ -24,7 +24,7 @@ public class HopeExploreFSM : HopeBaseFSM
 
       _destPoint = hopeAI.RandomWaypointNumber();
       hopeAI.SetRandomIdleActionNumber();
-      MusicManager.Instance.SetNewAudioSource(_EXPLORE);
+      MusicManager.Instance.SetCurrentAudioSource(_EXPLORE);
    }
 
    // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

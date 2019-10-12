@@ -15,7 +15,7 @@ public class MusicManager : MonoBehaviour
    private const string _CAUTION = "caution";
    private const string _CAUGHT = "caught";
    private AudioSource _previousAudioTrack;
-   private AudioSource _newAudioTrack;
+   private AudioSource _currentAudioTrack;
 
    /// <summary>
    /// for singleton access to MusicManager
@@ -61,30 +61,35 @@ public class MusicManager : MonoBehaviour
       }
    }
 
-   public void SetNewAudioSource(string newState)
+   public void SetCurrentAudioSource(string newState)
    {
       if (newState == _EXPLORE)
       {
-         _newAudioTrack = _exploreAudioSource;
+         _currentAudioTrack = _exploreAudioSource;
       }
       else if (newState == _CAUTION)
       {
-         _newAudioTrack = _cautionAudioSource;
+         _currentAudioTrack = _cautionAudioSource;
       }
       else if (newState == _CAUGHT)
       {
-         _newAudioTrack = _caughtAudioSource;
+         _currentAudioTrack = _caughtAudioSource;
       }
    }
 
    public void FadeTracksInOut()
    {
-      if (!_newAudioTrack.isPlaying)
+      if (!_currentAudioTrack.isPlaying)
       {
-         _newAudioTrack.Play();
+         _currentAudioTrack.Play();
       }
 
       _previousAudioTrack.volume -= (Time.deltaTime / 2.5f);
-      _newAudioTrack.volume += (Time.deltaTime / 2.5f);
+      _currentAudioTrack.volume += (Time.deltaTime / 2.5f);
+   }
+
+   public void FadeCurrentTrackOut()
+   {
+      _currentAudioTrack.volume -= (Time.deltaTime / 2.5f);
    }
 }

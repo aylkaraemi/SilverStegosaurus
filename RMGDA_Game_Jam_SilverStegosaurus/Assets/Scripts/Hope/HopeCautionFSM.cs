@@ -11,7 +11,7 @@ public class HopeCautionFSM : HopeBaseFSM
    {
       base.OnStateEnter(animator, stateInfo, layerIndex);
       agent.speed = 0f;
-      MusicManager.Instance.SetNewAudioSource(_CAUTION);
+      MusicManager.Instance.SetCurrentAudioSource(_CAUTION);
    }
 
    // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
