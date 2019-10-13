@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Rendering.PostProcessing;
 
 public class HopeAI : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class HopeAI : MonoBehaviour
    [SerializeField] private Slider _struggleBar;
    private Animator _animator;
    private GameObject _thePlayer;
+   //private 
    private float _timer = 0f;
    private Text _aText;
    private static HopeAI _instance;
@@ -41,6 +43,7 @@ public class HopeAI : MonoBehaviour
       _animator = GetComponent<Animator>();
       waypoints = GameObject.FindGameObjectsWithTag("Waypoint");
       _aText = GetComponentInChildren<Text>();
+      //_ca
    }
 
    // Start is called before the first frame update
