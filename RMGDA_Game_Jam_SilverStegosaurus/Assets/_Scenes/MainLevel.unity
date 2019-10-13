@@ -8280,11 +8280,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5172267262702598578, guid: ae0b553553e82e04d9011e555071acc7,
-        type: 3}
-      propertyPath: _increaseStruggleBarAmount
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 5172267261769915008, guid: ae0b553553e82e04d9011e555071acc7,
         type: 3}
       propertyPath: hope
