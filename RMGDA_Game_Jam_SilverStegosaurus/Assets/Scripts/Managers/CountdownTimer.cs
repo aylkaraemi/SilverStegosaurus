@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class CountdownTimer : MonoBehaviour
 {
-    public static float timeLeft = 10.0f; // time left in seconds
+    public static float timeLeft = 180.0f; // time left in seconds
     public Text countdown;
     private static float minLeft = Mathf.Floor(timeLeft / 60); // minutes left
     private static float secLeft = Mathf.Floor(timeLeft%60); // seconds left

@@ -265,7 +265,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 0.8
-  m_Text: YOU DIDN'T GIVE UP HOPE!
+  m_Text: YOU FOUND HOPE!
 --- !u!222 &367221705
 CanvasRenderer:
   m_ObjectHideFlags: 0
