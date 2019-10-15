@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class CountdownTimer : MonoBehaviour
 {
@@ -23,5 +24,9 @@ public class CountdownTimer : MonoBehaviour
         minLeft = Mathf.Floor(timeLeft / 60);
         secLeft = Mathf.Floor(timeLeft % 60);
         countdown.text = string.Format("{0}:{1:00}", minLeft, secLeft);
+        if (timeLeft <= 0)
+        {
+            SceneManager.LoadScene("LoseScreen", LoadSceneMode.Single);
+        }
     }
 }
