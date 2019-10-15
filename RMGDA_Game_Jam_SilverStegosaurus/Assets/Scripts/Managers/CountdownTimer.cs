@@ -26,7 +26,7 @@ public class CountdownTimer : MonoBehaviour
         countdown.text = string.Format("{0}:{1:00}", minLeft, secLeft);
         if (timeLeft <= 0)
         {
-            SceneManager.LoadScene("LoseScreen", LoadSceneMode.Single);
+            GameManager.Instance.PlayerLoses();
         }
     }
 }
