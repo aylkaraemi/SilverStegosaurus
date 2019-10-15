@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class CountdownTimer : MonoBehaviour
 {
-    public static float timeLeft = 180.0f; // time left in seconds
+    public static float timeLeft = 10.0f; // time left in seconds
     public Text countdown;
     private static float minLeft = Mathf.Floor(timeLeft / 60); // minutes left
     private static float secLeft = Mathf.Floor(timeLeft%60); // seconds left
@@ -24,7 +24,11 @@ public class CountdownTimer : MonoBehaviour
         minLeft = Mathf.Floor(timeLeft / 60);
         secLeft = Mathf.Floor(timeLeft % 60);
         countdown.text = string.Format("{0}:{1:00}", minLeft, secLeft);
-        if (timeLeft <= 0)
+        if (timeLeft < 3)
+        {
+            MusicManager.Instance.FadeCurrentTrackOut();
+        }
+        if (timeLeft < 0.5)
         {
             GameManager.Instance.PlayerLoses();
         }

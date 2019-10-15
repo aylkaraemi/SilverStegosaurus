@@ -33,9 +33,8 @@ public class GameManager : MonoBehaviour
    }
 
     public void PlayerLoses()
-    {
-        MusicManager.Instance.FadeCurrentTrackOut();
-        StartCoroutine(EndGameLoseCoroutine());
+    {        
+        SceneManager.LoadScene("LoseScreen", LoadSceneMode.Single);
     }
 
    private IEnumerator EndGameWinCoroutine()
@@ -44,9 +43,4 @@ public class GameManager : MonoBehaviour
       SceneLoader.Instance.LoadNextScene();
    }
 
-    private IEnumerator EndGameLoseCoroutine()
-    {
-        yield return new WaitForSeconds(2.0f);
-        SceneManager.LoadScene("LoseScreen", LoadSceneMode.Single);
-    }
 }
