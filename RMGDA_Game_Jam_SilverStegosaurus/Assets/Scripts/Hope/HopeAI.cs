@@ -138,7 +138,7 @@ public class HopeAI : MonoBehaviour
    }
 
    /// <summary>
-   /// rese's the struggle bar to the start value amount
+   /// reset's the struggle bar to the start value amount
    /// </summary>
    public void ResetStruggleBarToStartValue()
    {
