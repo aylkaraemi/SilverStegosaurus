@@ -6,15 +6,18 @@ using UnityEngine.SceneManagement;
 
 public class CountdownTimer : MonoBehaviour
 {
-    public static float timeLeft = 180.0f; // time left in seconds
+    public static float timeLeft; // time left in seconds
     public Text countdown;
-    private static float minLeft = Mathf.Floor(timeLeft / 60); // minutes left
-    private static float secLeft = Mathf.Floor(timeLeft%60); // seconds left
+    private static float minLeft; // minutes left
+    private static float secLeft; // seconds left
     private Animator anim;
 
     // Start is called before the first frame update
     void Start()
     {
+        timeLeft = 180.0f;
+        minLeft = Mathf.Floor(timeLeft / 60);
+        secLeft = Mathf.Floor(timeLeft % 60);
         anim = GetComponent<Animator>();
         countdown.text = string.Format("{0}:{1:00}", minLeft, secLeft);
     }
