@@ -5,6 +5,7 @@ using UnityEngine;
 public class PhysicsCameraFollow : MonoBehaviour
 {
    GameObject thePlayer;
+   public GameObject hiddenObjectCam;
 
    private void Awake()
    {
@@ -21,5 +22,21 @@ public class PhysicsCameraFollow : MonoBehaviour
    void LateUpdate()
    {
       transform.position += (thePlayer.GetComponent<Rigidbody>().transform.position - transform.position) * 2f * Time.deltaTime;
+   }
+
+   private void OnTriggerEnter(Collider other)
+   {
+      if (other.tag == "House")
+      {
+         hiddenObjectCam.SetActive(true);
+      }
+   }
+
+   private void OnTriggerExit(Collider other)
+   {
+      if (other.tag == "House")
+      {
+         hiddenObjectCam.SetActive(false);
+      }
    }
 }

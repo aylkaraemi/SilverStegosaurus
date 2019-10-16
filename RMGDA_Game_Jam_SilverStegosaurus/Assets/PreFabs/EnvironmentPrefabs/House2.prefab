@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4344237590742203210}
   - component: {fileID: 2038738327898709564}
   - component: {fileID: 6249473708784080688}
+  - component: {fileID: 792572475}
   m_Layer: 0
   m_Name: HouseCollider1
   m_TagString: Untagged
@@ -61,6 +62,22 @@ MonoBehaviour:
   m_Area: 1
   m_IgnoreFromBuild: 0
   m_AffectedAgents: ffffffff
+--- !u!54 &792572475
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 827793392307896135}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!114 &160710595630635880
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -305,9 +322,10 @@ GameObject:
   - component: {fileID: 5467420076110764032}
   - component: {fileID: 5636171338982839867}
   - component: {fileID: 3711840963038987431}
+  - component: {fileID: 1384768957}
   m_Layer: 0
   m_Name: HouseCollider3
-  m_TagString: Untagged
+  m_TagString: House
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -355,6 +373,22 @@ MonoBehaviour:
   m_Area: 1
   m_IgnoreFromBuild: 0
   m_AffectedAgents: ffffffff
+--- !u!54 &1384768957
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8415263086129275862}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!1001 &9070610080098545496
 PrefabInstance:
   m_ObjectHideFlags: 0
