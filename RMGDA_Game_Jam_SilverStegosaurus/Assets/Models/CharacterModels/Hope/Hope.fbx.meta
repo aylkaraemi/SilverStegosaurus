@@ -39,7 +39,12 @@ ModelImporter:
   - first:
       74: -2274057556838919307
     second: metarig|Walk.001
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert1
+    second: {fileID: 2100000, guid: 0dc4703cf9b0cc6499814b1643f9626c, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
