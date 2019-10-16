@@ -26,9 +26,10 @@ public class CountdownTimer : MonoBehaviour
         minLeft = Mathf.Floor(timeLeft / 60);
         secLeft = Mathf.Floor(timeLeft % 60);
         countdown.text = string.Format("{0}:{1:00}", minLeft, secLeft);
-        if (timeLeft <= 30)
+        if (timeLeft <= 20.0f)
         {
-            anim.SetTrigger("ActivateFlash");
+            anim.enabled = true;
+            //anim.SetTrigger("ActivateFlash");
         }
         if (timeLeft < 3)
         {
@@ -36,6 +37,7 @@ public class CountdownTimer : MonoBehaviour
         }
         if (timeLeft < 0.5)
         {
+            anim.enabled = false;
             countdown.color = Color.red;
             GameManager.Instance.PlayerLoses();
         }
