@@ -15,7 +15,7 @@ public class CountdownTimer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        timeLeft = 180.0f;
+        timeLeft = 181.0f;
         minLeft = Mathf.Floor(timeLeft / 60);
         secLeft = Mathf.Floor(timeLeft % 60);
         anim = GetComponent<Animator>();

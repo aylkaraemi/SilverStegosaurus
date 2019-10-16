@@ -6,6 +6,9 @@ using UnityEngine.SceneManagement;
 public class SceneLoader : MonoBehaviour
 {
    private static SceneLoader _instance;
+   public GameObject fadePanel;
+   private Animator animator;
+   private int sceneIndex;
 
    public static SceneLoader Instance
    {
@@ -23,22 +26,37 @@ public class SceneLoader : MonoBehaviour
    private void Awake()
    {
       _instance = this;
+      animator = fadePanel.GetComponent<Animator>();
    }
 
    public void LoadNextScene()
    {
       int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
-      SceneManager.LoadScene(currentSceneIndex + 1);
+      sceneIndex = currentSceneIndex + 1;
+      StartCoroutine(FadeOutSceneCoroutine());
+      //SceneManager.LoadScene(currentSceneIndex + 1);
    }
 
-    public void LoadLoseScene()
-    {
-        SceneManager.LoadScene("LoseScreen");
-    }
+   public void LoadLoseScene()
+   {
+      sceneIndex = 3;
+      StartCoroutine(FadeOutSceneCoroutine());
+      //SceneManager.LoadScene("LoseScreen");
+   }
 
-    public void LoadMainMenu()
-    {
-        SceneManager.LoadScene(0);
-    }
+   public void LoadMainMenu()
+   {
+      sceneIndex = 0;
+      StartCoroutine(FadeOutSceneCoroutine());
+      //SceneManager.LoadScene(0);
+   }
+
+   private IEnumerator FadeOutSceneCoroutine()
+   {
+      animator.SetBool("FadeOut", true);
+      Debug.Log("Fadeout triggered");
+      yield return new WaitForSeconds(1f);
+      SceneManager.LoadScene(sceneIndex);
+   }
 
 }

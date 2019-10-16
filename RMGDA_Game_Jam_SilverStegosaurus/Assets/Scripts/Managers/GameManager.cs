@@ -31,20 +31,21 @@ public class GameManager : MonoBehaviour
       StartCoroutine(EndGameWinCoroutine());
    }
 
-    public void PlayerLoses()
-    {        
-        SceneLoader.Instance.LoadLoseScene();
-    }
+   public void PlayerLoses()
+   {
+      MusicManager.Instance.FadeCurrentTrackOut();
+      SceneLoader.Instance.LoadLoseScene();
+   }
 
-    public void ReturnToMainMenu()
-    {
-        SceneLoader.Instance.LoadMainMenu();
-    }
+   public void ReturnToMainMenu()
+   {        
+      SceneLoader.Instance.LoadMainMenu();
+   }
 
-    private IEnumerator EndGameWinCoroutine()
-    {
-       yield return new WaitForSeconds(3.0f);
-       SceneLoader.Instance.LoadNextScene();
-    }
+   private IEnumerator EndGameWinCoroutine()
+   {
+      yield return new WaitForSeconds(3.0f);
+      SceneLoader.Instance.LoadNextScene();
+   }
 
 }
