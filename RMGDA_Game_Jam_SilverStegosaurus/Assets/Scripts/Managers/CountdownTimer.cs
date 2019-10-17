@@ -19,7 +19,7 @@ public class CountdownTimer : MonoBehaviour
         minLeft = Mathf.Floor(timeLeft / 60);
         secLeft = Mathf.Floor(timeLeft % 60);
         anim = GetComponent<Animator>();
-        anim.SetTrigger("ReturnToBase");
+        //anim.SetTrigger("ReturnToIdle");
         countdown.text = string.Format("{0}:{1:00}", minLeft, secLeft);
     }
 
@@ -27,23 +27,30 @@ public class CountdownTimer : MonoBehaviour
     void Update()
     {
         timeLeft -= Time.deltaTime;
-        minLeft = Mathf.Floor(timeLeft / 60);
-        secLeft = Mathf.Floor(timeLeft % 60);
-        countdown.text = string.Format("{0}:{1:00}", minLeft, secLeft);
-        if (timeLeft <= 20.0f)
+        if (timeLeft >= 0.5)
         {
-            //anim.enabled = true;
+            minLeft = Mathf.Floor(timeLeft / 60);
+            secLeft = Mathf.Floor(timeLeft % 60);
+            countdown.text = string.Format("{0}:{1:00}", minLeft, secLeft);
+        }
+        if (timeLeft <= 20.9f && timeLeft > 1.5)
+        {
             anim.SetTrigger("ActivateFlash");
         }
         if (timeLeft < 3)
         {
             MusicManager.Instance.FadeCurrentTrackOut();
         }
-        if (timeLeft < 0.5)
+        if (timeLeft <= 1.5)
         {
-            //anim.enabled = false;
-            countdown.color = Color.red;
+            anim.SetTrigger("EndFlash");
+            countdown.text = "0:00";
+        }
+        if (timeLeft <= 0)
+        {
             GameManager.Instance.PlayerLoses();
         }
     }
+
 }
+
