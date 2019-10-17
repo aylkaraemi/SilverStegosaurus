@@ -23,5 +23,10 @@ public class MenuManager : MonoBehaviour
          }
          
       }
+
+      if (Input.GetKeyDown(KeyCode.Q))
+      {
+         Application.Quit();
+      }
    }
 }

@@ -2392,12 +2392,14 @@ TextMesh:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 777194598}
-  m_Text: Press A to Play
+  m_Text: 'Press A Button to Play
+
+    Press the Q Key to Quit'
   m_OffsetZ: 0
   m_CharacterSize: 0.08
   m_LineSpacing: 1
   m_Anchor: 4
-  m_Alignment: 0
+  m_Alignment: 1
   m_TabSize: 4
   m_FontSize: 215
   m_FontStyle: 0
@@ -2452,7 +2454,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 777194598}
   m_LocalRotation: {x: 0, y: 0.38268343, z: 0, w: 0.92387956}
-  m_LocalPosition: {x: 62.4, y: 7.1, z: -30.6}
+  m_LocalPosition: {x: 62.4, y: 6.54, z: -30.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -2525,7 +2527,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4860030272561899242, guid: a3cf7ad84431da049be155f3c5356934,
+    - target: {fileID: 4630497870938130688, guid: a3cf7ad84431da049be155f3c5356934,
         type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -2535,7 +2537,7 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4630497870938130688, guid: a3cf7ad84431da049be155f3c5356934,
+    - target: {fileID: 4860030272561899242, guid: a3cf7ad84431da049be155f3c5356934,
         type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -3094,7 +3096,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Path: {fileID: 1471673825}
-  m_PathPosition: 0.9291543
+  m_PathPosition: 0
   m_PositionUnits: 0
   m_PathOffset: {x: 0, y: 2.9, z: 0}
   m_XDamping: 0
@@ -3525,7 +3527,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1637277603}
   m_LocalRotation: {x: 0, y: 0.38268343, z: 0, w: 0.92387956}
-  m_LocalPosition: {x: 82.98723, y: 2.9, z: -97.78719}
+  m_LocalPosition: {x: 106.00711, y: 2.9, z: -120.807106}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
