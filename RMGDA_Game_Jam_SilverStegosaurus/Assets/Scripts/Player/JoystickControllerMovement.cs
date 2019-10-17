@@ -6,6 +6,7 @@ public class JoystickControllerMovement : MonoBehaviour
 {
    public float maxMoveSpeed;
    public float turnSpeed;
+   public bool canMove;
 
    float moveX;
    float moveZ;
@@ -27,6 +28,7 @@ public class JoystickControllerMovement : MonoBehaviour
    void Start()
    {
       velocity = Vector3.zero;
+      canMove = true;
    }
 
    // Update is called once per frame
@@ -50,8 +52,12 @@ public class JoystickControllerMovement : MonoBehaviour
          _animator.SetBool("isMoving", true);
       }
 
-      Movement(moveX, moveZ);
-      Rotation(turn);
+      if (canMove)
+      {
+         Movement(moveX, moveZ);
+         Rotation(turn);
+      }
+      
 
    }
 

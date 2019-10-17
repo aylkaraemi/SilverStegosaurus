@@ -119,6 +119,10 @@ public class MusicManager : MonoBehaviour
 
    public void FadeInPartlyFadedMusic()
    {
+      //if (_instance != null)
+      //{
+
+      //}
       StartCoroutine(FadeInMusicCoroutine());
    }
 

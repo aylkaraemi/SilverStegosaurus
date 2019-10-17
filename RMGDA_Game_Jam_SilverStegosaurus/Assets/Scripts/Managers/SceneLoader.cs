@@ -51,7 +51,7 @@ public class SceneLoader : MonoBehaviour
    private IEnumerator FadeOutSceneCoroutine()
    {
       animator.SetBool("FadeOut", true);
-      Debug.Log("Fadeout triggered");
+      //Debug.Log("Fadeout triggered");
       yield return new WaitForSeconds(1f);
       SceneManager.LoadScene(sceneIndex);
    }
