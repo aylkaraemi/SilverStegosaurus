@@ -7,6 +7,8 @@ public class MusicManager : MonoBehaviour
    [SerializeField] AudioSource _exploreAudioSource;
    [SerializeField] AudioSource _cautionAudioSource;
    [SerializeField] AudioSource _caughtAudioSource;
+   [SerializeField] AudioSource _fxAudioSource;
+   [SerializeField] AudioClip _candyClip;
    private static MusicManager _instance;
 
    private float _fadeTimer = 0.0f;
@@ -91,5 +93,41 @@ public class MusicManager : MonoBehaviour
    public void FadeCurrentTrackOut()
    {
       _currentAudioTrack.volume -= (Time.deltaTime / 2.5f);
+   }
+
+   public void FadeCurrentTrackIn()
+   {
+      _currentAudioTrack.volume += (Time.deltaTime / 2.5f);
+   }
+
+   public void PlayCandySound()
+   {
+      _fxAudioSource.clip = _candyClip;
+      _fxAudioSource.Play();
+
+      StartCoroutine(PartlyFadeOutMusicCoroutine());
+   }
+
+   private IEnumerator PartlyFadeOutMusicCoroutine()
+   {
+      while (_currentAudioTrack.volume >= 0.3f)
+      {
+         FadeCurrentTrackOut();
+         yield return null;
+      }
+   }
+
+   public void FadeInPartlyFadedMusic()
+   {
+      StartCoroutine(FadeInMusicCoroutine());
+   }
+
+   private IEnumerator FadeInMusicCoroutine()
+   {
+      while (_currentAudioTrack.volume < 1.0f)
+      {
+         FadeCurrentTrackIn();
+         yield return null;
+      }
    }
 }

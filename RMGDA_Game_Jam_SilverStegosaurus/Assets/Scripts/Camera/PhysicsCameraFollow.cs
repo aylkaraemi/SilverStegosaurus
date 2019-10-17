@@ -44,10 +44,8 @@ public class PhysicsCameraFollow : MonoBehaviour
 
          if (_hit.collider.gameObject.tag == "Player")
          {
-            Debug.Log("hit: " + _hit.collider.name);
             if (hiddenObjectCam.activeSelf)
             {
-               Debug.Log("Reset");
                hiddenObjectCam.SetActive(false);
             }
          }
