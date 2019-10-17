@@ -34,21 +34,18 @@ public class SceneLoader : MonoBehaviour
       int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
       sceneIndex = currentSceneIndex + 1;
       StartCoroutine(FadeOutSceneCoroutine());
-      //SceneManager.LoadScene(currentSceneIndex + 1);
    }
 
    public void LoadLoseScene()
    {
       sceneIndex = 3;
       StartCoroutine(FadeOutSceneCoroutine());
-      //SceneManager.LoadScene("LoseScreen");
    }
 
    public void LoadMainMenu()
    {
       sceneIndex = 0;
       StartCoroutine(FadeOutSceneCoroutine());
-      //SceneManager.LoadScene(0);
    }
 
    private IEnumerator FadeOutSceneCoroutine()
