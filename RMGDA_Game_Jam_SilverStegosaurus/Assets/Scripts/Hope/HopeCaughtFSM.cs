@@ -46,12 +46,12 @@ public class HopeCaughtFSM : HopeBaseFSM
       }
       else if (hopeAI.GetHopeStruggleBarValue() > _STRUGGLE_BAR_WIN)
       {
-         Debug.Log("Player caught Hope value above 95");
+         //Debug.Log("Player caught Hope value above 95");
          GameManager.Instance.PlayerWins();
       }
       else if (hopeAI.GetHopeStruggleBarValue() < _STRUGGLE_BAR_MIN)
       {
-         Debug.Log("Hope broke free value below 0");
+         //Debug.Log("Hope broke free value below 0");
          animator.SetBool("isCaught", false);
          hopeAI.wasCaught = false;
       }

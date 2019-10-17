@@ -49,7 +49,7 @@ public class PlayerAction : MonoBehaviour
    {
       if (Input.GetButtonDown("Fire1"))
       {
-         Debug.Log("Pressed A Button");
+         //Debug.Log("Pressed A Button");
 
          // catch Hope with A Button
          if (_isHopeInRange && !HopeAI.Instance.wasCaught)
@@ -102,7 +102,7 @@ public class PlayerAction : MonoBehaviour
    {
       if (other.tag == "Hope")
       {
-         Debug.Log("Hope is in Range");
+         //Debug.Log("Hope is in Range");
          _isHopeInRange = true;
          HopeAI.Instance.TurnOnAButtonUI();
       }
@@ -112,7 +112,7 @@ public class PlayerAction : MonoBehaviour
          if (!_pickedUpCandy)
          {
             candyAmount++;
-            Debug.Log("Candy Amount now = " + candyAmount);
+            //Debug.Log("Candy Amount now = " + candyAmount);
 
             Candy candy = other.GetComponent<Candy>();
 
@@ -133,7 +133,7 @@ public class PlayerAction : MonoBehaviour
    {
       if (other.tag == "Hope")
       {
-         Debug.Log("Hope is out of Range");
+         //Debug.Log("Hope is out of Range");
          _isHopeInRange = false;
          HopeAI.Instance.TurnOffAButtonUI();
       }
