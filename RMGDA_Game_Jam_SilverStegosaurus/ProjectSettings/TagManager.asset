@@ -9,6 +9,7 @@ TagManager:
   - TrickOrTreatWaypoint
   - Candy
   - House
+  - StruggleBar
   layers:
   - Default
   - TransparentFX

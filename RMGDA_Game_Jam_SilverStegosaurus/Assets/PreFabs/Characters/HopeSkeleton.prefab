@@ -575,7 +575,7 @@ GameObject:
   - component: {fileID: 3860211014583147253}
   - component: {fileID: 3860211014583147252}
   m_Layer: 10
-  m_Name: Canvas
+  m_Name: HopeCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

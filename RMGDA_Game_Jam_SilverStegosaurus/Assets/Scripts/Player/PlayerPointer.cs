@@ -9,6 +9,7 @@ public class PlayerPointer : MonoBehaviour
    private void OnEnable()
    {
       MusicManager.Instance.PlayCandySound();
+
    }
 
    private void OnDisable()
@@ -19,7 +20,7 @@ public class PlayerPointer : MonoBehaviour
    // Start is called before the first frame update
    void Start()
    {
-      
+      hope = GameObject.FindGameObjectWithTag("Hope");
    }
 
    // Update is called once per frame

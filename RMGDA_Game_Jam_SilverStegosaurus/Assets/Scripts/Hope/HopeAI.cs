@@ -10,7 +10,7 @@ public class HopeAI : MonoBehaviour
    public const float MAX_STRUGGLE_BAR_AMOUNT = 80.0f;
    public bool wasCaught = false;
 
-   [SerializeField] GameObject _struggleBarHolder; // added in inspector
+   [SerializeField] private GameObject _struggleBarHolder; // added in inspector
    [SerializeField] private Slider _struggleBar;
    private Animator _animator;
    private GameObject _thePlayer;
@@ -49,7 +49,12 @@ public class HopeAI : MonoBehaviour
    // Start is called before the first frame update
    void Start()
    {
-      
+      _struggleBarHolder = GameObject.Find("StruggleBarHolder");
+
+      if (_struggleBarHolder != null)
+      {
+         _struggleBar = _struggleBarHolder.transform.GetChild(0).GetComponent<Slider>();
+      }
    }
 
    // Update is called once per frame
@@ -147,12 +152,14 @@ public class HopeAI : MonoBehaviour
 
    public void TurnOffStruggleBar()
    {
-      _struggleBarHolder.SetActive(false);
+      //_struggleBarHolder.SetActive(false);
+      _struggleBar.gameObject.SetActive(false);
    }
 
    public void TurnOnStruggleBar()
    {
-      _struggleBarHolder.SetActive(true);
+      _struggleBar.gameObject.SetActive(true);
+
       if (_struggleBar != null)
       {
          _struggleBar.value = MAX_STRUGGLE_BAR_AMOUNT;
