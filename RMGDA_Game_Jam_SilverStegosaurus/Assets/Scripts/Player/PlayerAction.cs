@@ -64,10 +64,10 @@ public class PlayerAction : MonoBehaviour
          }
       }
 
-      if (Input.GetKeyDown(KeyCode.Q))
-      {
-         Application.Quit();
-      }
+      //if (Input.GetKeyDown(KeyCode.Q))
+      //{
+      //   Application.Quit();
+      //}
    }
 
    public void SetAnimatorStruggleBool(bool isStruggling)

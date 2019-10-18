@@ -817,9 +817,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 'Press A to Return to the Main Menu
-
-    Press the Q key to quit the game'
+  m_Text: Press A to Return to the Main Menu
 --- !u!222 &1789474571
 CanvasRenderer:
   m_ObjectHideFlags: 0

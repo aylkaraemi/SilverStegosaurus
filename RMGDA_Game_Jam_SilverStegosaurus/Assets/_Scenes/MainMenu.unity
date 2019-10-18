@@ -2392,9 +2392,7 @@ TextMesh:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 777194598}
-  m_Text: 'Press A Button to Play
-
-    Press the Q Key to Quit'
+  m_Text: Press A Button to Play
   m_OffsetZ: 0
   m_CharacterSize: 0.08
   m_LineSpacing: 1
